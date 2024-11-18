@@ -28,6 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Логин и пароль сохранены!');
         
         // Перенаправление на doctors.html
-        window.location.href = 'main/doctors.html';
+        window.location.href = 'index.html';
     });
 });
