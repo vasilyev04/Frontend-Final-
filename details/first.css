@@ -1,0 +1,150 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #087d3f;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+
+
+.burger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+
+  @media (max-width: 768px) {
+    .burger-menu {
+      display: block; 
+    }
+    
+    .nav-links {
+      display: none; 
+      flex-direction: column; 
+    }
+  
+    .nav-links.active {
+      display: block; 
+    }
+
+    .nav-links ul {
+        flex-direction: column; 
+        gap: 10px; 
+      }
+    
+      header {
+        flex-direction: column; 
+        align-items: flex-start; 
+      }
+  }
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    margin-top: 100px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 120px;
+    text-align: center;
+}
+
+.doctor-profile {
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.doctor-profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.doctor-profile h2 {
+    margin-top: 20px;
+}
+
+.back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #087d3f;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #45a049;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #087d3f;
+    color: white;
+    margin-top: 20px;
+}
+
+.author {
+    font-size: 0.8em;
+}
+
+.rating {
+    display: inline-flex;
+    cursor: pointer;
+  }
+  
+  .star {
+    font-size: 2rem;
+    color: gray;
+    transition: color 0.2s;
+  }
+  
+  .star.selected {
+    color: gold;
+  }
+  

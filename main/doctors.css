@@ -1,0 +1,211 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #087d3f;
+    color: white;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+}
+
+
+
+.burger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+
+  .nav-links {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+  
+
+  @media (max-width: 768px) {
+    .burger-menu {
+      display: block; 
+    }
+    
+    .nav-links {
+      display: none; 
+      flex-direction: column; 
+    }
+  
+    .nav-links.active {
+      display: block; 
+    }
+
+    .nav-links ul {
+        flex-direction: column; 
+        gap: 10px; 
+      }
+    
+      header {
+        flex-direction: column; 
+        align-items: flex-start; 
+      }
+  }
+
+
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.container {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-bar h2 {
+    margin: 0;
+}
+
+.doctor-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.doctor-card {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: calc(33% - 20px);
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.doctor-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.doctor-card h3 {
+    margin-top: 0;
+    color: #333;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+.doctor-card p {
+    color: #777;
+    margin: 5px 0;
+    overflow-wrap: break-word; 
+}
+
+.details-btn {
+    background-color: #087d3f;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.details-btn:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 768px) {
+    .doctor-card {
+        width: 100%; /* Карточки занимают всю ширину */
+    }
+
+    .doctor-list {
+        gap: 15px; /* Уменьшенное расстояние между карточками */
+    }
+}
+
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #087d3f;
+    color: white;
+    margin-top: 20px;
+}
+
+.author {
+    font-size: 0.8em;
+}
+
+.accordion {
+    background-color: #087d3f;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    transition: 0.4s;
+    margin-bottom: 5px;
+}
+
+.panel {
+    padding: 0 10px;
+    display: none;
+    background-color: white;
+    overflow: hidden;
+    text-align: center;
+}
+
+h2 {
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.FAQ {
+    width: 100%;
+    text-align: center;
+}

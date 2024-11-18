@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiparis' Clinic - Doctors</title>
+    <link rel="stylesheet" href="doctors.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="doctors.js" defer></script>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <header>
+        <div class="burger-menu" onclick="toggleMenu()">☰</div>
+        <nav class="nav-links">
+            <ul>
+                <li><a class="btn btn-outline-light" href="../main/doctors.html" role="button">Doctors</a></li>
+                <li><a class="btn btn-outline-light" href="../form.html" role="button">Appointment</a></li>
+                <li><a class="btn btn-outline-light" href="../contacts.html" role="button">Contacts</a></li>
+                <li><a class="btn btn-outline-light" href="../prices.html" role="button">Prices</a></li>
+                <li><a class="btn btn-outline-light" href="../about.html" role="button">About Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+<div class="container" id="weather" style="text-align: center; margin-bottom: 20px;">
+    <p>Загрузка данных о погоде...</p>
+</div>
+
+
+<div class="container" id="doctors">
+    <div class="title-bar">
+        <h2>Available Doctors</h2>
+
+    </div>
+
+    <button class="btn btn-outline-primary" onclick="toggleSort()">Sort by Experience</button>
+
+
+    <div class="doctor-list">
+        <div class="doctor-card">
+            <img src="image1.jpg" alt="Dr. Қазанбай">
+            <h3>Dr. Қазанбай</h3>
+            <p>Specialist: Cardiology</p>
+            <p>Experience: 10 years</p>
+            <a class="btn btn-outline-success" href="../details/first.html" role="button">Details</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="image2.png" alt="Dr. Кринжбек">
+            <h3>Dr. Кринжбек</h3>
+            <p>Specialist: Dermatology</p>
+            <p>Experience: 8 years</p>
+            <a class="btn btn-outline-success" href="../details/second.html" role="button">Details</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="image3.jpg" alt="Dr. Ақшаш">
+            <h3>Dr. Ақшаш</h3>
+            <p>Specialist: Pediatrics</p>
+            <p>Experience: 7 years</p>
+            <a class="btn btn-outline-success" href="../details/third.html" role="button">Details</a>
+        </div>
+
+        <div class="doctor-card">
+            <img src="image4.jpg" alt="Dr. Көкшаш">
+            <h3>Dr. Көкшаш</h3>
+            <p>Specialist: Neurology</p>
+            <p>Experience: 5 years</p>
+            <a class="btn btn-outline-success" href="../details/fourth.html" role="button">Details</a>
+        </div>
+    </div>
+</div>
+
+<h2 class="FAQ" id="myText" style="font-family: Arial, Helvetica, sans-serif;">Frequently Asked Questions</h2>
+
+<button class="accordion">Question 1: What services does your clinic provide?</button>
+<div class="panel">
+    <p>Our clinic provides a wide range of medical services, including specialist consultations, laboratory tests, diagnostics and surgical procedures.</p>
+</div>
+
+<button class="accordion">Question 2: How to make an appointment?</button>
+<div class="panel">
+    <p>You can make an appointment through our website, by calling or visiting the clinic in person.</p>
+</div>
+
+<button class="accordion">Question 3: What are the clinic's opening hours?</button>
+<div class="panel">
+    <p>Our clinic is open Monday to Friday from 8:00 to 18:00, and Saturday from 9:00 to 14:00. The clinic is closed on Sunday.</p>
+</div>
+
+<button class="btn btn-outline-success" onclick="toggleFont()">Change Font</button>
+
+<footer>
+    <p>&copy; 2024 Kiparis' clinic. All rights reserved.</p>
+    <p class="author">Created by: R. Vasilyev</p>
+</footer>
+
+
+<script>
+    async function fetchWeather() {
+        const latitude = 51.1694; // Широта Астаны
+        const longitude = 71.4491; // Долгота Астаны
+        const apiUrl = `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current_weather=true&timezone=Asia/Almaty`;
+
+        try {
+            const response = await fetch(apiUrl);
+            if (!response.ok) {
+                throw new Error('Ошибка при получении данных о погоде');
+            }
+            const data = await response.json();
+            displayWeather(data);
+        } catch (error) {
+            console.error('Ошибка:', error.message);
+            document.getElementById('weather').innerHTML = '<p>Не удалось загрузить данные о погоде.</p>';
+        }
+    }
+
+    function displayWeather(data) {
+        const weatherContainer = document.getElementById('weather');
+        const temperature = Math.round(data.current_weather.temperature);
+        const windspeed = data.current_weather.windspeed;
+        const weathercode = data.current_weather.weathercode;
+        const description = getWeatherDescription(weathercode);
+
+        weatherContainer.innerHTML = `
+            <h3>Погода в Астане</h3>
+            <p>Температура: ${temperature}°C</p>
+            <p>Скорость ветра: ${windspeed} м/с</p>
+            <p>Состояние: ${description}</p>
+        `;
+    }
+
+    function getWeatherDescription(code) {
+        const descriptions = {
+            0: 'Ясно',
+            1: 'Преимущественно ясно',
+            2: 'Переменная облачность',
+            3: 'Пасмурно',
+            45: 'Туман',
+            48: 'Осаждающийся туман',
+            51: 'Легкая морось',
+            53: 'Умеренная морось',
+            55: 'Сильная морось',
+            56: 'Легкая ледяная морось',
+            57: 'Сильная ледяная морось',
+            61: 'Легкий дождь',
+            63: 'Умеренный дождь',
+            65: 'Сильный дождь',
+            66: 'Легкий ледяной дождь',
+            67: 'Сильный ледяной дождь',
+            71: 'Легкий снегопад',
+            73: 'Умеренный снегопад',
+            75: 'Сильный снегопад',
+            77: 'Снежные зерна',
+            80: 'Легкий ливень',
+            81: 'Умеренный ливень',
+            82: 'Сильный ливень',
+            85: 'Легкий снегопад',
+            86: 'Сильный снегопад',
+            95: 'Гроза',
+            96: 'Гроза с легким градом',
+            99: 'Гроза с сильным градом'
+        };
+        return descriptions[code] || 'Неизвестные погодные условия';
+    }
+
+    document.addEventListener('DOMContentLoaded', fetchWeather);
+</script>
+
+</body>
+</html>
